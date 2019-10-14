@@ -46,26 +46,30 @@ public class WebexService {
 			
 		} catch (RestClientException exception) {
 			System.out.println("REST and HTTP error" + exception.getMessage());
-			throw exception;
+//			throw exception;
+			return generatePage("Alooooo");
 		}
 	}
 
 	private String generatePage(String access_token) {
 
-		Resource resource = resourceLoader.getResource("classpath:templates/widget.html");
-
-		try {
-			InputStream input = resource.getInputStream();
-			File file = resource.getFile();
-			String allString = FileUtils.readFileToString(file,StandardCharsets.UTF_8);
-			allString = allString.replace("$accessToken", access_token);
-			return allString;
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "<h1>failed to open the file</h1>";
-		}
-
+//		Resource resource = resourceLoader.getResource("classpath:templates/widget.html");
+//
+//		try {
+//			InputStream input = resource.getInputStream();
+//			File file = resource.getFile();
+//			String allString = FileUtils.readFileToString(file,StandardCharsets.UTF_8);
+//			allString = allString.replace("$accessToken", access_token);
+//			return allString;
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//			return "<h1>failed to open the file</h1>";
+//		}
 		
+		String allString = "<html>  <head>    <meta charset=\"utf8\">    <title>Space Widget Demo</title>    <link rel=\"stylesheet\" href=\"https://code.s4d.io/widget-space/production/main.css\">  </head>  <body>       <div style=\"width: 500px; height: 500px;\"         data-toggle=\"ciscospark-space\"        data-access-token=\"$xyz\"        data-destination-id=\"Y2lzY29zcGFyazovL3VzL1JPT00vNmM5ZWQ1ODAtZDg3Ni0xMWU5LTk3ZmQtMDkzOWRhNDAwZWMz\"         data-destination-type=\"spaceId\"      />    <script src=\"https://code.s4d.io/widget-space/production/bundle.js\"></script>  </body></html>";
+		allString = allString.replace("$xyz", access_token);
+		
+		return allString;
 	}
 
 	private String createInputString(String code) {
