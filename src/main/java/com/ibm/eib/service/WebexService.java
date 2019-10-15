@@ -66,7 +66,7 @@ public class WebexService {
 //			return "<h1>failed to open the file</h1>";
 //		}
 		
-		String allString = "<html>  <head>    <meta charset=\"utf8\">    <title>Space Widget Demo</title>    <link rel=\"stylesheet\" href=\"https://code.s4d.io/widget-space/production/main.css\">  </head>  <body>       <div style=\"width: 500px; height: 500px;\"         data-toggle=\"ciscospark-space\"        data-access-token=\"$xyz\"        data-destination-id=\"Y2lzY29zcGFyazovL3VzL1JPT00vNmM5ZWQ1ODAtZDg3Ni0xMWU5LTk3ZmQtMDkzOWRhNDAwZWMz\"         data-destination-type=\"spaceId\"      />    <script src=\"https://code.s4d.io/widget-space/production/bundle.js\"></script>  </body></html>";
+		String allString = "<html>  <head>    <meta charset=\"utf8\">    <title>Space Widget Demo</title>    <link rel=\"stylesheet\" href=\"https://code.s4d.io/widget-space/production/main.css\">  </head>  <body>       <div style=\"width: 500px; height: 500px;\"         data-toggle=\"ciscospark-space\"        data-access-token=\"$xyz\"        data-destination-id=\"Y2lzY29zcGFyazovL3VzL1RFQU0vOWRhZWMxYjAtZWU5ZS0xMWU5LTg2NDAtMDVmYzcxNDFkMTk2\"         data-destination-type=\"spaceId\"      />    <script src=\"https://code.s4d.io/widget-space/production/bundle.js\"></script>  </body></html>";
 		allString = allString.replace("$xyz", access_token);
 		
 		return allString;
