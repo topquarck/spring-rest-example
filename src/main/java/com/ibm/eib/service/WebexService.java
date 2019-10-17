@@ -1,15 +1,6 @@
 package com.ibm.eib.service;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -39,8 +30,8 @@ public class WebexService {
 			AuthJson resultObject = 
 					restTemplate.postForObject(authUrl,request, AuthJson.class);
 
-			if (resultObject.getAccess_token()!= null) {
-				return generatePage(resultObject.getAccess_token());
+			if (resultObject.access_token != null) {
+				return generatePage(resultObject.access_token);
 			} 
 			return "<h1>access token is null!!</h1>";
 			
@@ -69,5 +60,11 @@ public class WebexService {
 		
 		return builder.toString();
 	}
+private class AuthJson {
 
+	public String access_token;
+	private int expires_in;
+	private String refresh_token;
+	private int refresh_token_expires_in;
+}
 }
