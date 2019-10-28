@@ -37,8 +37,12 @@ public class WebexService {
 			
 		} catch (RestClientException exception) {
 			System.out.println("REST and HTTP error" + exception.getMessage());
-			return generatePage("Alooooo");
+			return generateError(exception.getMessage());
 		}
+	}
+
+	private String generateError(String exceptionMsg) {
+		String out = "<h1>"+exceptionMsg+"</h1>";
 	}
 
 	private String generatePage(String access_token) {
