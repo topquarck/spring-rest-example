@@ -27,13 +27,13 @@ public class WebexService {
 
 			HttpEntity<String> request = new HttpEntity<String>(createInputString(code), headers);
 			
-			AuthJson resultObject = 
-					restTemplate.postForObject(authUrl,request, AuthJson.class);
+			String resultObject =
+					restTemplate.postForObject(authUrl,request, String.class);
 
-			if (resultObject.access_token != null) {
-				return generatePage(resultObject.access_token);
-			} 
-			return "<h1>access token is null!!</h1>";
+//			if (resultObject.access_token != null) {
+//				return generatePage(resultObject.access_token);
+//			}
+			return "<h1>"+resultObject+"</h1>";
 			
 		} catch (RestClientException exception) {
 			System.out.println("REST and HTTP error" + exception.getMessage());
@@ -61,7 +61,7 @@ public class WebexService {
 		builder.append("client_id=Cba89729a684e25751b9a8a43bc881190b518c3b533c5f2f134db61b49626d71c&");
 		builder.append("client_secret=a43d5625b89b0d81645a7594aa683b7ff6b1307a608dcc9ac98dc8c4b2463141&");
 		builder.append("code="+code+"&");
-		builder.append("redirect_uri=http://webex-interceptor-app-webex-interceptor.apps.ca-central-1.starter.openshift-online.com/hi/sayhi&");
+		builder.append("redirect_uri=http://webex-interceptor-app-webex-interceptor.apps.ca-central-1.starter.openshift-online.com/hi/sayhi");
 		
 		return builder.toString();
 	}
