@@ -43,6 +43,7 @@ public class WebexService {
 
 	private String generateError(String exceptionMsg) {
 		String out = "<h1>"+exceptionMsg+"</h1>";
+		return out;
 	}
 
 	private String generatePage(String access_token) {
