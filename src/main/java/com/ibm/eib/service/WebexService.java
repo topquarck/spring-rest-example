@@ -1,5 +1,6 @@
 package com.ibm.eib.service;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.HttpEntity;
@@ -27,13 +28,15 @@ public class WebexService {
 
 			HttpEntity<String> request = new HttpEntity<String>(createInputString(code), headers);
 			
-			AuthJson resultObject = 
-					restTemplate.postForObject(authUrl,request, AuthJson.class);
+			String resultString =
+					restTemplate.postForObject(authUrl,request, String.class);
 
-			if (resultObject.access_token != null) {
-				return generatePage(resultObject.access_token);
-			} 
-			return "<h1>access token is null!!</h1>";
+//			if (resultObject.access_token != null) {
+//				return generatePage(resultObject.access_token);
+//			}
+			JSONObject json = new JSONObject(resultString);
+			return generatePage((String) json.get("access_token"));
+			// return "<h1>access token is null!!</h1>";
 			
 		} catch (RestClientException exception) {
 			System.out.println("REST and HTTP error" + exception.getMessage());
